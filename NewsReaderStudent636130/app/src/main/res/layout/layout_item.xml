@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:backgroundTint="#FFFFFF">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:elevation="5dp"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <TextView
+                android:id="@+id/mainheading"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:text="Main heading goes here and will be this long if in two lines"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="6"
+                    android:text="main content goes here so for sample we can add anything here no one really cares truts me lmao"
+                    android:textSize="16sp">
+
+                </TextView>
+
+
+                <ImageView
+                    android:id="@+id/savearticles"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background">
+
+                </ImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:text="Published at"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <ImageButton
+                    android:id="@+id/saveArticlesbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:background="#fff"
+                    app:srcCompat="@drawable/savearticles_foreground" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
