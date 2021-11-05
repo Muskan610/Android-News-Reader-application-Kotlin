@@ -51,6 +51,8 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         swipeRefreshLayout = view.findViewById(R.id.swiperefresh)
         swipeRefreshLayout.setOnRefreshListener(this)
 
+        loadNews()
+
         recyclerViewofhome.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -60,14 +62,13 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             }
         })
 
-        loadNews()
+
         super.onViewCreated(view, savedInstanceState)
     }
 
     private fun loadNews(){
-
         swipeRefreshLayout.setRefreshing(true)
-        call?.enqueue(object  : Callback<ResultList>{
+        service?.getAllResults()?.enqueue(object  : Callback<ResultList>{
             override fun onResponse(call: Call<ResultList>, response: Response<ResultList>) {
                 val body = response.body()
                 Log.d("CHECK1", "getting response")
@@ -87,6 +88,7 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         })
     }
+
 
     fun getNextArticle(){
         val callByNextId = service?.getAllResultsByNextId(nextId)
@@ -112,6 +114,7 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onRefresh() {
+        articles.clear()
         loadNews()
     }
 }
