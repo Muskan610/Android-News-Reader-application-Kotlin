@@ -7,36 +7,36 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface GetResultsService {
-    @GET("api/Articles")
+    @GET("Articles")
     fun getAllResults(
         @Query("count") count: Int = 20): Call<ResultList>
 
-    @GET("api/Articles/liked")
+    @GET("Articles/liked")
     fun getAllLikedArticles(): Call<ResultList>
 
-    @GET("/api/Articles/{id}/")
+    @GET("Articles/{id}/")
     fun getAllResultsByNextId(@Path("id") nextId: Int,
                           @Query("count") count: Int = 20): Call<ResultList>
 
     @FormUrlEncoded
-    @POST("api/Users/register")
+    @POST("Users/register")
     fun register(
         @Field("UserName") UserName: String,
         @Field("Password") Password: String
     ): Call<RegisterResponse>
 
     @FormUrlEncoded
-    @POST("api/Users/login")
+    @POST("Users/login")
     fun login(
         @Field("UserName") UserName: String,
         @Field("Password") Password: String
     ): Call<LoginResponse>
 
     //like dislike calls
-    @PUT("api/Articles/{id}/like")
+    @PUT("Articles/{id}/like")
     fun likeArticle(@Path("id") id: Int)
 
-    @DELETE("api/Articles/{id}/like")
+    @DELETE("Articles/{id}/like")
     fun dislikeArticle(@Path("id") id: Int)
 
 

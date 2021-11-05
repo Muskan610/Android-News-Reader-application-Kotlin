@@ -25,7 +25,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Specefic News Feed"
+                android:text="@string/detailTitleWebView"
                 android:textColor="#05245C"
                 android:textSize="20sp"
                 android:textStyle="bold">
@@ -37,9 +37,9 @@
     </androidx.appcompat.widget.Toolbar>
 
     <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/webview"
         android:layout_below="@id/toolbar">
 
     </WebView>

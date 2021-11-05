@@ -1,5 +1,26 @@
 <resources>
     <string name="app_name">NewsReaderStudent636130</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- strings for log in/register -->
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="Password">Password</string>
+    <string name="woLoginContinue">Continue reading\nnews without loging in</string>
+    <string name="ifReg"><u>Dont have an account?\nRegister here!</u></string>
+    <string name="ifLogin"><u>Already have an account?\nLog in here!</u></string>
+    <string name="loginReg">Login to see \nyour favourite articles\n\nOR\n\nRegister if you havent already\nto save your favourite articles</string>
+
+    <!-- strings for main activity -->
+    <string name="newsFeed">News Feed</string>
+    <string name="home">Home</string>
+    <string name="savedArticles">Saved Articles</string>
+
+    <!-- strings for article detail fragment -->
+    <string name="detailTitle">Specific article detail</string>
+    <string name="detailTitleWebView">Full article</string>
+    <string name="date">published date</string>
+    <string name="articleTitle">Title</string>
+    <string name="articleSummary">Summary</string>
+    <string name="read">Read full article</string>
 </resources>

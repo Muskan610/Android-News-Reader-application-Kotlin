@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ViewsActivities.RegisterView">
-
+    tools:context=".LoginRegister.RegisterView">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +13,7 @@
         android:textSize="24sp"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/design_default_color_primary_dark"
-        android:text="Register">
+        android:text="@string/register">
     </TextView>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:id="@+id/eUsername"
-            android:hint="Username">
+            android:hint="@string/username">
         </com.google.android.material.textfield.TextInputEditText>
 
 
@@ -44,9 +43,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:id="@+id/ePassword"
-            android:hint="Password">
+            android:hint="@string/Password">
         </com.google.android.material.textfield.TextInputEditText>
 
 
@@ -56,12 +55,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:text="GO"
+        android:text="@string/register"
         android:id="@+id/btnRegister"
         android:textColor="#FFF"
         android:background ="@color/design_default_color_primary_dark">
 
     </Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:text="@string/ifLogin"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20sp">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/btnbacktomain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="140dp"
+        android:text="@string/woLoginContinue"
+        android:textAlignment="center"
+        android:textAllCaps="false" />
 
 
 </LinearLayout>

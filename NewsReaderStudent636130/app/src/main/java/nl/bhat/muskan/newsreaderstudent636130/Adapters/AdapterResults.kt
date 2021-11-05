@@ -56,7 +56,7 @@ class AdapterResults(var context: Context, private val items: List<ResultsDTO>) 
             mheading = itemView.findViewById(R.id.mainheading)
             mcontent = itemView.findViewById(R.id.content)
             mtime = itemView.findViewById(R.id.time)
-            imageView = itemView.findViewById(R.id.savearticles)
+            imageView = itemView.findViewById(R.id.imageView)
             cardView = itemView.findViewById(R.id.cardview)
         }
     }

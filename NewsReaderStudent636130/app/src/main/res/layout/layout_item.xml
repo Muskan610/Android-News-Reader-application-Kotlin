@@ -27,7 +27,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:padding="5dp"
-                android:text="Main heading goes here and will be this long if in two lines"
+                android:text="@string/articleTitle"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold">
@@ -36,7 +36,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -46,15 +46,15 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:maxLines="6"
-                    android:text="main content goes here so for sample we can add anything here no one really cares truts me lmao"
+                    android:maxLines="4"
+                    android:text="@string/articleSummary"
                     android:textSize="16sp">
 
                 </TextView>
 
 
                 <ImageView
-                    android:id="@+id/savearticles"
+                    android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -73,22 +73,17 @@
 
                 <TextView
                     android:id="@+id/time"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Published at"
+                    android:text="@string/date"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold">
+                    android:textStyle="bold"
+                    android:paddingTop="13sp"
+                    android:paddingLeft="4sp">
 
                 </TextView>
 
-                <ImageButton
-                    android:id="@+id/saveArticlesbtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="41dp"
-                    android:layout_gravity="center"
-                    android:background="#fff"
-                    app:srcCompat="@drawable/savearticles_foreground" />
             </LinearLayout>
 
         </LinearLayout>

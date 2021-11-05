@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
-        android:text="Login to see \nyour favourite articles\n\nOR\n\nRegister if you havent already\nto save your favourite articles"
+        android:text="@string/loginReg"
         android:textAlignment="center"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="24sp"></TextView>
