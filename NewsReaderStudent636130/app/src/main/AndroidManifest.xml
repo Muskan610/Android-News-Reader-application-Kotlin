@@ -19,6 +19,12 @@
             android:name=".ViewsActivities.loginView"
             android:exported="true" />
         <activity
+            android:name=".ViewsActivities.RegisterView"
+            android:exported="true" />
+        <activity
+            android:name=".ViewsActivities.DetailActivityView"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +31,7 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     val call = service?.getAllLikedArticles(AppPreferences.token)
 
     lateinit var recyclerViewofhome: RecyclerView
+    //lateinit var noSavedAticles: TextView
     private var nextId: Int = 0
     private var fetching: Boolean = false
 
@@ -39,7 +41,7 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.homefragment, null as ViewGroup?)
+        val v = inflater.inflate(R.layout.savedarticlesfragment, null as ViewGroup?)
         recyclerViewofhome = v.findViewById(R.id.recyclerviewSAVED)
         recyclerViewofhome.setLayoutManager(LinearLayoutManager(context))
         return v
@@ -50,6 +52,7 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         recyclerViewofhome.setAdapter(adapter)
 
         swipeRefreshLayout = view.findViewById(R.id.swiperefreshSAVED)
+        //noSavedAticles = view.findViewById(R.id.noSavedAticles)
         swipeRefreshLayout.setOnRefreshListener(this)
 
         loadNews()
@@ -62,6 +65,13 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 }
             }
         })
+
+        /*if(articles.isEmpty()){
+            noSavedAticles.setVisibility(View.VISIBLE);
+        }
+        else{
+            noSavedAticles.setVisibility(View.GONE);
+        }*/
 
 
         super.onViewCreated(view, savedInstanceState)

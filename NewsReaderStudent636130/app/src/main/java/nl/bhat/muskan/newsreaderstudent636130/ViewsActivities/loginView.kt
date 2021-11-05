@@ -18,6 +18,7 @@ import nl.bhat.muskan.newsreaderstudent636130.ApiRetrofit.RetrofitClientInstance
 import nl.bhat.muskan.newsreaderstudent636130.LoginRegister.LoginResponse
 import nl.bhat.muskan.newsreaderstudent636130.MainActivity
 import nl.bhat.muskan.newsreaderstudent636130.SharedPreferences.AppPreferences
+import org.w3c.dom.Text
 
 
 class loginView : AppCompatActivity() {
@@ -25,6 +26,7 @@ class loginView : AppCompatActivity() {
     private lateinit var btnbacktomain: Button
     private lateinit var username: TextInputEditText
     private lateinit var password: TextInputEditText
+    private lateinit var ifReg: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +36,15 @@ class loginView : AppCompatActivity() {
         password = findViewById(R.id.ePassword)
         btnLogin = findViewById(R.id.btnLogin)
         btnbacktomain=findViewById(R.id.btnbacktomain)
+        ifReg=findViewById(R.id.ifReg)
 
         btnbacktomain.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        })
+
+        ifReg.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, RegisterView::class.java)
             startActivity(intent)
         })
 
@@ -54,6 +62,9 @@ class loginView : AppCompatActivity() {
 
     //username: joey69
     //password: verysecurepassword
+
+    //alishya69
+    //8901qwwe
 
     fun login(username: TextInputEditText, password: TextInputEditText){
         val service = RetrofitClientInstance.retrofitInstance?.create(GetResultsService::class.java)

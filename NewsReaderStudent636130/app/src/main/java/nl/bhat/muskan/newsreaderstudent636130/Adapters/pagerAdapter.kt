@@ -1,5 +1,6 @@
 package nl.bhat.muskan.newsreaderstudent636130.Adapters
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -11,6 +12,7 @@ import nl.bhat.muskan.newsreaderstudent636130.ViewsActivities.saveArticlesFragme
 class pagerAdapter(fm: FragmentManager, var tabcount: Int) : FragmentPagerAdapter(fm, tabcount) {
     override fun getItem(position: Int): Fragment {
         if(AppPreferences.isLogin){
+            Log.d("login", "user islogin is true")
             return when (position) {
                 0 -> homeFragment()
                 1 -> saveArticlesFragment()
@@ -18,7 +20,9 @@ class pagerAdapter(fm: FragmentManager, var tabcount: Int) : FragmentPagerAdapte
             }
         }
         else{
+            Log.d("login", "user islogin is false, not logged in")
             return when (position) {
+
                 0 -> homeFragment()
                 1 -> LoginRegisterFragment()
                 else -> homeFragment()

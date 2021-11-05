@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginRegister.RegisterView">
+    tools:context=".ViewsActivities.RegisterView">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,7 +62,9 @@
 
     </Button>
 
-    <TextView
+    <Button
+        android:id="@+id/ifLogin"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -73,7 +75,7 @@
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20sp">
 
-    </TextView>
+    </Button>
 
     <Button
         android:id="@+id/btnbacktomain"
