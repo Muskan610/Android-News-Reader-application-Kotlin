@@ -16,6 +16,7 @@ import nl.bhat.muskan.newsreaderstudent636130.ApiRetrofit.RetrofitClientInstance
 import nl.bhat.muskan.newsreaderstudent636130.GetResults.ResultList
 import nl.bhat.muskan.newsreaderstudent636130.GetResults.ResultsDTO
 import nl.bhat.muskan.newsreaderstudent636130.R
+import nl.bhat.muskan.newsreaderstudent636130.SharedPreferences.AppPreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +27,7 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     var adapter: AdapterResults? = null
     private val articles = mutableListOf<ResultsDTO>()
     val service = RetrofitClientInstance.retrofitInstance?.create(GetResultsService::class.java)
-    val call = service?.getAllResults()
+    val call = service?.getAllLikedArticles(AppPreferences.token)
 
     lateinit var recyclerViewofhome: RecyclerView
     private var nextId: Int = 0
@@ -68,7 +69,8 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun loadNews(){
         swipeRefreshLayout.setRefreshing(true)
-        service?.getAllResults()?.enqueue(object  : Callback<ResultList>{
+       service?.getAllResults()?.enqueue(object  : Callback<ResultList>{
+       //service?.getAllLikedArticles(AppPreferences.token)?.enqueue(object  : Callback<ResultList>{
             override fun onResponse(call: Call<ResultList>, response: Response<ResultList>) {
                 val body = response.body()
                 Log.d("CHECK1", "getting response")

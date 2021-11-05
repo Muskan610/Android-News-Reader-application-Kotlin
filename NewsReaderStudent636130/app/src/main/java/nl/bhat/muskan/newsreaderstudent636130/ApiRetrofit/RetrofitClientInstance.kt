@@ -13,6 +13,15 @@ object RetrofitClientInstance {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     val setLevel= httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
     val okHttpClient = OkHttpClient()
+     /* val okHttpClient = OkHttpClient.Builder().addInterceptor(object : Interceptor() {
+        @Throws(IOException::class)
+        fun intercept(chain: Interceptor.Chain): Response? {
+            val newRequest: Request = chain.request().newBuilder()
+                .addHeader("Authorization", "Bearer $token")
+                .build()
+            return chain.proceed(newRequest)
+        }
+    }).build()*/
 
 
     // create a retrofit instance, only if it has not been created yet.

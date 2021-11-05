@@ -12,7 +12,9 @@ interface GetResultsService {
         @Query("count") count: Int = 20): Call<ResultList>
 
     @GET("Articles/liked")
-    fun getAllLikedArticles(): Call<ResultList>
+    fun getAllLikedArticles(
+        @Header("x-authtoken") auth: String
+    ): Call<ResultList>
 
     @GET("Articles/{id}/")
     fun getAllResultsByNextId(@Path("id") nextId: Int,
