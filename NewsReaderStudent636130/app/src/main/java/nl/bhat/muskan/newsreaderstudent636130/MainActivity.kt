@@ -31,8 +31,6 @@ class MainActivity : AppCompatActivity() {
     var mtoolbar: Toolbar? = null
     lateinit var btnlogout: Button
     lateinit var btnlogin: Button
-    lateinit var btnbacktomain: Button
-    lateinit var uiModeManager: UiModeManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

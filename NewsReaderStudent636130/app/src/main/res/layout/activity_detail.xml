@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ViewsActivities.DetailActivityView"
-    android:baselineAligned="false"
     >
 
-    <androidx.appcompat.widget.Toolbar
+
+    <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -16,9 +17,7 @@
         android:elevation="4dp"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        android:padding="0dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,94 +33,92 @@
 
         </TextView>
 
-    </androidx.appcompat.widget.Toolbar>
+    </Toolbar>
 
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/article_image"
-                android:layout_width="match_parent"
-                android:layout_height="261dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-            <TextView
-                android:id="@+id/article_title"
-                android:layout_width="379dp"
-                android:layout_height="43dp"
-                android:layout_marginTop="36dp"
-                android:text="@string/articleTitle"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/article_image"
-                />
-
-            <TextView
-                android:id="@+id/article_text"
-                android:layout_width="379dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:layout_marginTop="16dp"
-                android:paddingBottom="2dp"
-                android:text="@string/articleSummary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/article_title"
-                android:includeFontPadding="false"
-                />
-
-            <TextView
-                android:id="@+id/article_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/article_image" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-    <Button
-        android:id="@+id/readmorebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="49dp"
-        android:backgroundTint="@color/design_default_color_primary"
-        android:text="@string/read"
-        android:textColor="#fff"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="633dp" />
 
     <ImageView
-        android:id="@+id/likebutton"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
-        app:srcCompat="@drawable/ic_likebutton"
-        app:tint="#FCC8C2"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="633dp" />
+        android:id="@+id/article_image"
+        android:layout_width="match_parent"
+        android:layout_height="261dp"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/backgrounds/scenic">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/article_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/articleTitle"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingLeft="30dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/article_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:paddingLeft="30dp">
+
+    </TextView>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:scrollbarStyle="insideOverlay">
+
+        <TextView
+            android:id="@+id/article_summary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:includeFontPadding="false"
+            android:paddingBottom="2dp"
+            android:text="@string/articleSummary"
+            >
+
+        </TextView>
+
+    </ScrollView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/readmorebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:backgroundTint="@color/design_default_color_primary"
+            android:text="@string/read"
+            android:textColor="#fff"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="573dp"
+            android:layout_marginLeft="30dp">
+
+        </Button>
+
+        <ImageView
+            android:id="@+id/ic_likebutton_filled"
+            android:layout_width="45dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="60dp"
+            app:srcCompat="@drawable/ic_likebutton_filled"
+            app:tint="@android:color/darker_gray"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+
+</LinearLayout>

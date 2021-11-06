@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import nl.bhat.muskan.newsreaderstudent636130.GetResults.ResultsDTO
 import nl.bhat.muskan.newsreaderstudent636130.R
+import nl.bhat.muskan.newsreaderstudent636130.ViewsActivities.DetailActivityView
 import nl.bhat.muskan.newsreaderstudent636130.ViewsActivities.webView
 
 class AdapterResults(var context: Context, private val items: List<ResultsDTO>) :
@@ -28,16 +29,28 @@ class AdapterResults(var context: Context, private val items: List<ResultsDTO>) 
 
 
     override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
-        holder.cardView.setOnClickListener {
-            val intent = Intent(context, webView::class.java)
-            intent.putExtra("Url", items[position].Url)
-            context.startActivity(intent)
-            Log.d("WORKS", "on click listener")
-        }
+
         holder.mtime?.text = "Published at: " + items[position].PublishDate
         holder.mheading.text = items[position].Title
         holder.mcontent.text = items[position].Summary
         Glide.with(context).load(items[position].Image).into(holder.imageView)
+
+        Log.d("deatil view", "on click listener")
+        holder.cardView.setOnClickListener {
+            val intent = Intent(context, DetailActivityView::class.java)
+            intent.putExtra("Url", items[position].Url)
+            intent.putExtra("Date", items[position].PublishDate)
+            intent.putExtra("Title", items[position].Title)
+            intent.putExtra("Summary", items[position].Summary)
+            intent.putExtra("Image", items[position].Image)
+            context.startActivity(intent)
+            Log.d("WORKS", "on click listener") ///
+
+            /*val intent = Intent(context, webView::class.java)
+           intent.putExtra("Url", items[position].Url)
+           context.startActivity(intent)
+           Log.d("WORKS", "on click listener") */
+        }
     }
 
     override fun getItemCount(): Int {

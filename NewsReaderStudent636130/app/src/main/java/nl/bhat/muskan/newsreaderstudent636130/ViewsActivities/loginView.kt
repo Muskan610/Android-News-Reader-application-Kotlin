@@ -60,6 +60,8 @@ class loginView : AppCompatActivity() {
         })
     }
 
+    //user accounts
+
     //username: joey69
     //password: verysecurepassword
 
