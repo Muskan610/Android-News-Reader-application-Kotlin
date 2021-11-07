@@ -1,5 +1,9 @@
 package nl.bhat.muskan.newsreaderstudent636130.GetResults
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class ResultsDTO (
     var Id: String,
     var Title: String,
@@ -8,4 +12,4 @@ data class ResultsDTO (
     var Image: String,
     var Url: String,
     var IsLiked: String
-)
+)  : Parcelable

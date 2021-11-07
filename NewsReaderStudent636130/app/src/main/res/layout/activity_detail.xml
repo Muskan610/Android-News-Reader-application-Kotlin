@@ -33,6 +33,15 @@
 
         </TextView>
 
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="45dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="130dp"
+            app:srcCompat="@drawable/backBtn"
+            app:tint="@android:color/white"
+            tools:ignore="MissingConstraints" />
+
     </Toolbar>
 
 

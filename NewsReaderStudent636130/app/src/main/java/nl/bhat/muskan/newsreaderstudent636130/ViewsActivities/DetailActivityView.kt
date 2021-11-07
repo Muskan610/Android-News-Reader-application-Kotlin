@@ -42,7 +42,7 @@ class DetailActivityView: AppCompatActivity() {
 
         val articleList = intent.getSerializableExtra(ARTICLE_LIST) as ArrayList<ResultsDTO>
         val article = articleList.get(0)
-        Log.d("data transferred via intent", "works")
+        Log.d("transfer works", "data transferred via intent")
 
         val title = findViewById<TextView>(R.id.article_title)
         val text = findViewById<TextView>(R.id.article_summary)
@@ -102,8 +102,7 @@ class DetailActivityView: AppCompatActivity() {
 
         readmorebutton.setOnClickListener(View.OnClickListener {
             val intent2 = Intent(this, webView::class.java)
-            val url: Uri = Uri.parse(article.Url)
-            intent2.putExtra("Url", url)
+            intent.putExtra("Url", article.Url)
             this.startActivity(intent2)
         })
     }
