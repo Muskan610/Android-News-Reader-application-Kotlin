@@ -1,5 +1,6 @@
 package nl.bhat.muskan.newsreaderstudent636130.ViewsActivities
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
@@ -16,6 +17,7 @@ import nl.bhat.muskan.newsreaderstudent636130.ApiRetrofit.GetResultsService
 import nl.bhat.muskan.newsreaderstudent636130.ApiRetrofit.RetrofitClientInstance
 import nl.bhat.muskan.newsreaderstudent636130.GetResults.ResultList
 import nl.bhat.muskan.newsreaderstudent636130.GetResults.ResultsDTO
+import nl.bhat.muskan.newsreaderstudent636130.MyPositionListener
 import nl.bhat.muskan.newsreaderstudent636130.R
 import nl.bhat.muskan.newsreaderstudent636130.SharedPreferences.AppPreferences
 import retrofit2.Call
@@ -48,7 +50,14 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        adapter = AdapterResults(requireContext(), articles!!)
+        adapter = AdapterResults(requireContext(), articles!!, object: MyPositionListener {
+            override fun onItemClicked(position: Int) {
+                val intent = Intent(context, DetailActivityView::class.java)
+                val sendThisArticle = articles[position]
+                intent.putExtra("ARTICLE", sendThisArticle.toString())
+                startActivity(intent, savedInstanceState)
+            }
+        })
         recyclerViewofhome.setAdapter(adapter)
 
         swipeRefreshLayout = view.findViewById(R.id.swiperefreshSAVED)

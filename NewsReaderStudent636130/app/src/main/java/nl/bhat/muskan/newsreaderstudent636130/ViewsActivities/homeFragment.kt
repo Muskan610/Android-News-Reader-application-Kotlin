@@ -1,9 +1,11 @@
 package nl.bhat.muskan.newsreaderstudent636130.ViewsActivities
 
+import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
+import android.os.FileUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -15,8 +17,10 @@ import nl.bhat.muskan.newsreaderstudent636130.ApiRetrofit.GetResultsService
 import nl.bhat.muskan.newsreaderstudent636130.ApiRetrofit.RetrofitClientInstance
 import nl.bhat.muskan.newsreaderstudent636130.GetResults.ResultList
 import nl.bhat.muskan.newsreaderstudent636130.GetResults.ResultsDTO
+import nl.bhat.muskan.newsreaderstudent636130.MyPositionListener
 import nl.bhat.muskan.newsreaderstudent636130.R
 import nl.bhat.muskan.newsreaderstudent636130.SharedPreferences.AppPreferences
+import nl.bhat.muskan.newsreaderstudent636130.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +30,7 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     var adapter: AdapterResults? = null
     private val articles = mutableListOf<ResultsDTO>()
+
     val service = RetrofitClientInstance.retrofitInstance?.create(GetResultsService::class.java)
     val call = service?.getAllLikedArticles(AppPreferences.token)
 
@@ -39,19 +44,31 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.homefragment, null as ViewGroup?)
-        recyclerViewofhome = v.findViewById(R.id.recyclerviewHome)
-        recyclerViewofhome.setLayoutManager(LinearLayoutManager(context))
-        return v
+        return inflater.inflate(R.layout.homefragment, null as ViewGroup?)
+        //recyclerViewofhome.setLayoutManager(LinearLayoutManager(context))
+        //return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        adapter = AdapterResults(requireContext(), articles!!)
-        recyclerViewofhome.setAdapter(adapter)
-
+        AppPreferences.init(requireContext())
         swipeRefreshLayout = view.findViewById(R.id.swiperefresh)
         swipeRefreshLayout.setOnRefreshListener(this)
+        recyclerViewofhome = view.findViewById(R.id.recyclerviewHome)
 
+        adapter = AdapterResults(requireContext(), articles!!, object: MyPositionListener {
+            override fun onItemClicked(position: Int) {
+                val intent = Intent(context, DetailActivityView::class.java)
+                val sendThisArticle = articles[position]
+
+                val arrayListResultsDTO = ArrayList<ResultsDTO>()
+                arrayListResultsDTO.add(sendThisArticle)
+
+                intent.putExtra("ARTICLE_LIST", arrayListResultsDTO)
+                startActivity(intent, savedInstanceState)
+            }
+        })
+        recyclerViewofhome.setLayoutManager(LinearLayoutManager(context))
+        recyclerViewofhome.setAdapter(adapter)
         loadNews()
 
         recyclerViewofhome.addOnScrollListener(object : RecyclerView.OnScrollListener(){
@@ -120,3 +137,4 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         loadNews()
     }
 }
+

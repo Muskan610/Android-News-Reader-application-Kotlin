@@ -36,10 +36,10 @@ interface GetResultsService {
 
     //like dislike calls
     @PUT("Articles/{id}/like")
-    fun likeArticle(@Path("id") id: Int)
+    fun likeArticle(@Path("id") id: Int) : Call<Void>
 
     @DELETE("Articles/{id}/like")
-    fun dislikeArticle(@Path("id") id: Int)
+    fun dislikeArticle(@Path("id") id: Int): Call<Void>
 
 
 }
