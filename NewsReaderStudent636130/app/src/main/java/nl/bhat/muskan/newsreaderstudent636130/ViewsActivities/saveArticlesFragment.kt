@@ -42,6 +42,7 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        onResume()
         return inflater.inflate(R.layout.savedarticlesfragment, null as ViewGroup?)
     }
 
@@ -132,5 +133,11 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onRefresh() {
         articles.clear()
         loadNews()
+    }
+
+    override fun onResume()
+    {  // After a pause OR at startup
+        super.onResume();
+        //Refresh your stuff here
     }
 }

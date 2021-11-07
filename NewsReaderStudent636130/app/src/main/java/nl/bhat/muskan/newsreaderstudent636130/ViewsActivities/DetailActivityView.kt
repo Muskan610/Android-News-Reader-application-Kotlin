@@ -83,9 +83,11 @@ class DetailActivityView: AppCompatActivity() {
                             Log.d("Like", response.toString())
                             if(article.IsLiked.equals("true", ignoreCase = true)){
                                 likebutton.setColorFilter(Color.GRAY)
+                                Toast.makeText(applicationContext, "article unliked", Toast.LENGTH_LONG).show()
                             }
                             else{
                                 likebutton.setColorFilter(Color.RED)
+                                Toast.makeText(applicationContext, "article liked", Toast.LENGTH_LONG).show()
                             }
                         }
                         override fun onFailure(call: Call<Void>, t: Throwable) {
@@ -102,13 +104,13 @@ class DetailActivityView: AppCompatActivity() {
 
 
         readmorebutton.setOnClickListener(View.OnClickListener {
-           /* val intent2 = Intent(this, webView::class.java)
-            intent.putExtra("Url", article.Url)
-            startActivity(intent2)*/
+           val intent2 = Intent(this, webView::class.java)
+            intent2.putExtra("Url", article.Url)
+            startActivity(intent2)
 
-            val uri: Uri = Uri.parse(article.Url) // missing 'http://' will cause crashed
+            /*val uri: Uri = Uri.parse(article.Url) // missing 'http://' will cause crashed
             val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            startActivity(intent)*/
         })
 
         backbtn.setOnClickListener {
@@ -118,6 +120,7 @@ class DetailActivityView: AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+
         finish()
     }
 }
