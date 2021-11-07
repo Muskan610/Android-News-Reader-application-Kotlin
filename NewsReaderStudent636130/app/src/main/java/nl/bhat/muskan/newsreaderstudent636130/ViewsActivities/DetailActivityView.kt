@@ -50,6 +50,7 @@ class DetailActivityView: AppCompatActivity() {
         val likebutton = findViewById<ImageView>(R.id.ic_likebutton_filled)
         val readmorebutton = findViewById<Button>(R.id.readmorebutton)
         val dateholder = findViewById<TextView>(R.id.article_date)
+        val backbtn = findViewById<ImageView>(R.id.backbtn)
 
         val date = article.PublishDate.substring(0, 10)
         val time = article.PublishDate.substring(11, 16)
@@ -88,23 +89,31 @@ class DetailActivityView: AppCompatActivity() {
                             }
                         }
                         override fun onFailure(call: Call<Void>, t: Throwable) {
-                            Toast.makeText(applicationContext, "Er is iets misgegaan met het liken/unliken van het artikel :(", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, "somthing went wrong", Toast.LENGTH_LONG).show()
                         }
 
                     })
                 }
             }
             else {
-                Toast.makeText(applicationContext, "Je moet ingelogd zijn om een artikel te kunnen liken!", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "you should be logged in to like articles", Toast.LENGTH_LONG).show()
             }
         }
 
 
         readmorebutton.setOnClickListener(View.OnClickListener {
-            val intent2 = Intent(this, webView::class.java)
+           /* val intent2 = Intent(this, webView::class.java)
             intent.putExtra("Url", article.Url)
-            this.startActivity(intent2)
+            startActivity(intent2)*/
+
+            val uri: Uri = Uri.parse(article.Url) // missing 'http://' will cause crashed
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
         })
+
+        backbtn.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onBackPressed() {
