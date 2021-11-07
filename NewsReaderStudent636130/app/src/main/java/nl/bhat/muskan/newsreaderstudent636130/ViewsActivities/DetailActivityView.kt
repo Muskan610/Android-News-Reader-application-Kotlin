@@ -42,6 +42,7 @@ class DetailActivityView: AppCompatActivity() {
 
         val articleList = intent.getSerializableExtra(ARTICLE_LIST) as ArrayList<ResultsDTO>
         val article = articleList.get(0)
+        Log.d("data transferred via intent", "works")
 
         val title = findViewById<TextView>(R.id.article_title)
         val text = findViewById<TextView>(R.id.article_summary)

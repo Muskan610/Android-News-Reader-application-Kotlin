@@ -38,22 +38,6 @@ class AdapterResults(var context: Context, private val items: List<ResultsDTO>, 
         holder.mcontent.text = items[position].Summary
         Glide.with(context).load(items[position].Image).into(holder.imageView)
 
-        Log.d("deatil view", "on click listener")
-        /*holder.cardView.setOnClickListener {
-            val intent = Intent(context, DetailActivityView::class.java)
-            intent.putExtra("Url", items[position].Url)
-            intent.putExtra("Date", items[position].PublishDate)
-            intent.putExtra("Title", items[position].Title)
-            intent.putExtra("Summary", items[position].Summary)
-            intent.putExtra("Summary", items[position].Summary)
-            //val bmImg = BitmapFactory.decodeFile(items[position].Image)
-            //intent.putExtra("Image", bmImg)
-
-            intent.putExtra("Image", items[position].Image)
-            context.startActivity(intent)
-            Log.d("WORKS", "on click listener") ///
-        }*/
-
         holder.itemView.setOnClickListener{
             positionListener.onItemClicked(holder.adapterPosition)
         }

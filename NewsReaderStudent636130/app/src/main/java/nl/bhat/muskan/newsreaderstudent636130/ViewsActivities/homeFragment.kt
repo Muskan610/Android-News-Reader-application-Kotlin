@@ -63,6 +63,8 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
                 intent.putExtra("ARTICLE_LIST", arrayListResultsDTO)
                 startActivity(intent, savedInstanceState)
+
+                Log.d("on click deatail view", "works")
             }
         })
         recyclerViewofhome.setLayoutManager(LinearLayoutManager(context))

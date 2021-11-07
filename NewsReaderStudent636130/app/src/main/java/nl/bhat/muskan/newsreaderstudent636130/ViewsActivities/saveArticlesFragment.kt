@@ -47,7 +47,7 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         AppPreferences.init(requireContext())
-        swipeRefreshLayout = view.findViewById(R.id.swiperefresh)
+        swipeRefreshLayout = view.findViewById(R.id.swiperefreshSAVED)
         swipeRefreshLayout.setOnRefreshListener(this)
         recyclerViewofhome = view.findViewById(R.id.recyclerviewSAVED)
 
