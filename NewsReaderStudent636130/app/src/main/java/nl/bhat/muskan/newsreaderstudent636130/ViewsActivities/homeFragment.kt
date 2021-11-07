@@ -45,8 +45,6 @@ class homeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.homefragment, null as ViewGroup?)
-        //recyclerViewofhome.setLayoutManager(LinearLayoutManager(context))
-        //return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

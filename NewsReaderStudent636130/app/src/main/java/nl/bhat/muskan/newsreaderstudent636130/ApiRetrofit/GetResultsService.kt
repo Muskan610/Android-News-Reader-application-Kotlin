@@ -36,10 +36,12 @@ interface GetResultsService {
 
     //like dislike calls
     @PUT("Articles/{id}/like")
-    fun likeArticle(@Path("id") id: Int) : Call<Void>
+    fun likeArticle(@Path("id") id: Int,
+                    @Header("x-authtoken") auth: String) : Call<Void>
 
     @DELETE("Articles/{id}/like")
-    fun dislikeArticle(@Path("id") id: Int): Call<Void>
+    fun dislikeArticle(@Path("id") id: Int,
+                       @Header("x-authtoken") auth: String): Call<Void>
 
 
 }

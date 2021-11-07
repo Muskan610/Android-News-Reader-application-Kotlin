@@ -37,33 +37,34 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var nextId: Int = 0
     private var fetching: Boolean = false
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.savedarticlesfragment, null as ViewGroup?)
-        recyclerViewofhome = v.findViewById(R.id.recyclerviewSAVED)
-        recyclerViewofhome.setLayoutManager(LinearLayoutManager(context))
-        return v
+        return inflater.inflate(R.layout.savedarticlesfragment, null as ViewGroup?)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        AppPreferences.init(requireContext())
+        swipeRefreshLayout = view.findViewById(R.id.swiperefresh)
+        swipeRefreshLayout.setOnRefreshListener(this)
+        recyclerViewofhome = view.findViewById(R.id.recyclerviewSAVED)
+
         adapter = AdapterResults(requireContext(), articles!!, object: MyPositionListener {
             override fun onItemClicked(position: Int) {
                 val intent = Intent(context, DetailActivityView::class.java)
                 val sendThisArticle = articles[position]
-                intent.putExtra("ARTICLE", sendThisArticle.toString())
+
+                val arrayListResultsDTO = ArrayList<ResultsDTO>()
+                arrayListResultsDTO.add(sendThisArticle)
+
+                intent.putExtra("ARTICLE_LIST", arrayListResultsDTO)
                 startActivity(intent, savedInstanceState)
             }
         })
+        recyclerViewofhome.setLayoutManager(LinearLayoutManager(context))
         recyclerViewofhome.setAdapter(adapter)
-
-        swipeRefreshLayout = view.findViewById(R.id.swiperefreshSAVED)
-        //noSavedAticles = view.findViewById(R.id.noSavedAticles)
-        swipeRefreshLayout.setOnRefreshListener(this)
-
         loadNews()
 
         recyclerViewofhome.addOnScrollListener(object : RecyclerView.OnScrollListener(){
@@ -75,16 +76,10 @@ class saveArticlesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             }
         })
 
-        /*if(articles.isEmpty()){
-            noSavedAticles.setVisibility(View.VISIBLE);
-        }
-        else{
-            noSavedAticles.setVisibility(View.GONE);
-        }*/
-
 
         super.onViewCreated(view, savedInstanceState)
     }
+
 
     private fun loadNews(){
         swipeRefreshLayout.setRefreshing(true)

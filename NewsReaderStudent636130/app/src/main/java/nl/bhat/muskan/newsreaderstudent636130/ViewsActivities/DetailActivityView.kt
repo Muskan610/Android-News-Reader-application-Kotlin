@@ -70,9 +70,9 @@ class DetailActivityView: AppCompatActivity() {
 
         likebutton.setOnClickListener {
             if(AppPreferences.isLogin){
-                var likecall = service?.likeArticle(article.Id.toInt())
+                var likecall = service?.likeArticle(article.Id.toInt(), AppPreferences.token)
                 if(article.IsLiked.equals("true", ignoreCase = true)){
-                    likecall = service?.dislikeArticle(article.Id.toInt())
+                    likecall = service?.dislikeArticle(article.Id.toInt(), AppPreferences.token)
                 }
 
                 if (likecall != null) {
