@@ -55,13 +55,11 @@ class DetailActivityView: AppCompatActivity() {
         val date = article.PublishDate.substring(0, 10)
         val time = article.PublishDate.substring(11, 16)
 
-        dateholder.setText("Op $date om $time")
+        dateholder.setText("On $date at $time")
         title.setText(article.Title)
         text.setText(article.Summary)
 
         Glide.with(this).load(article.Image).into(image)
-        //Glide.with(this).load(article.Image).into(holder.imageView)
-
 
         if(article.IsLiked.equals("true", ignoreCase = true)){
             likebutton.setColorFilter(Color.RED)

@@ -61,7 +61,8 @@
         android:text="@string/articleTitle"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:paddingLeft="30dp">
+        android:paddingLeft="30dp"
+        android:paddingTop="30dp">
 
     </TextView>
 
@@ -76,13 +77,13 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="230dp"
-        android:scrollbars="vertical"
+        android:layout_height="174dp"
         android:fillViewport="true"
-        android:paddingRight="30dp"
         android:paddingLeft="30dp"
         android:paddingTop="15dp"
-        android:scrollbarStyle="insideOverlay">
+        android:paddingRight="30dp"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical">
 
         <TextView
             android:id="@+id/article_summary"
@@ -90,14 +91,11 @@
             android:layout_height="match_parent"
             android:includeFontPadding="false"
             android:paddingBottom="2dp"
-            android:text="@string/articleSummary"
-            >
+            android:text="@string/articleSummary">
 
         </TextView>
 
     </ScrollView>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -60,7 +60,7 @@
                     android:layout_weight="1"
                     android:padding="5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background">
+                    android:src="@tools:sample/backgrounds/scenic">
 
                 </ImageView>
 
